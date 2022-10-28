@@ -2,13 +2,13 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-public class C_Hamburgers {
+public class C_Poisoned_Dagger {
     static PrintWriter out = new PrintWriter((System.out));
     static Reader sc;
 
     public static void main(String args[]) throws IOException {
         sc=new Reader();
-        int t=1;
+        int t=sc.nextInt();
         while(t-->0)
         {
             solve();
@@ -19,35 +19,29 @@ public class C_Hamburgers {
     
     private static void solve() {
         int n = sc.nextInt();
-        long k = sc.nextLong();
-        int[] a = new int[n];
-        int[] b = new int[n];
+        long h = sc.nextInt();
+        ArrayList<Long> list = new ArrayList<>();
         for(int i=0; i<n; i++){
-           a[i] = sc.nextInt();
+           list.add(sc.nextLong());
         }
-        for(int i=0; i<n; i++){
-           b[i] = sc.nextInt();
-        }
-        long ans = 0;
-        while(true){
-            for(int i=0; i<n; i++){
-               if(b[i]>=a[i]){
-                b[i] -= a[i];
-               }else{
-                k = k - (a[i]-b[i]);
-                b[i] = 0;
-               }
+        
+        long i = 1;
+        long j =(long) 1e18;
+        while(i<=j){
+            long mid = (i+j)/2;
+            long sum = mid;
+            for(int idx=0; idx<n-1; idx++){
+               sum += Math.min(mid,list.get(idx+1)-list.get(idx));
             }
-            if (k >= 0) {
-                ans++;  
+            if(sum<h){
+                i = mid+1;
             }else{
-                break;
+                j = mid-1;
             }
         }
-        System.out.println(ans);
+        System.out.println(j+1);
+        
     }
-    
-
 
     static class Reader {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

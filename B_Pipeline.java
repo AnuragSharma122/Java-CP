@@ -2,7 +2,7 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-public class C_Hamburgers {
+public class B_Pipeline {
     static PrintWriter out = new PrintWriter((System.out));
     static Reader sc;
 
@@ -18,36 +18,28 @@ public class C_Hamburgers {
     }
     
     private static void solve() {
-        int n = sc.nextInt();
+        long n = sc.nextLong();
         long k = sc.nextLong();
-        int[] a = new int[n];
-        int[] b = new int[n];
-        for(int i=0; i<n; i++){
-           a[i] = sc.nextInt();
-        }
-        for(int i=0; i<n; i++){
-           b[i] = sc.nextInt();
+
+        long i = 2;
+        long j = k;
+        if (k * (k - 1) / 2 < n-1) {
+            System.out.println(-1);
+            return;
         }
         long ans = 0;
-        while(true){
-            for(int i=0; i<n; i++){
-               if(b[i]>=a[i]){
-                b[i] -= a[i];
-               }else{
-                k = k - (a[i]-b[i]);
-                b[i] = 0;
-               }
-            }
-            if (k >= 0) {
-                ans++;  
+        while(i<=j){
+            long mid = i +(j-i)/2;
+            long sum = k*(k+1)/2 -1 - (mid*(mid+1)/2 - 1) - (j-mid);
+            if(sum >= n){
+                ans = mid;
+                i = mid+1;
             }else{
-                break;
+                j = mid-1;
             }
         }
         System.out.println(ans);
     }
-    
-
 
     static class Reader {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

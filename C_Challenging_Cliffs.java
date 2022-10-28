@@ -2,13 +2,13 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-public class C_Hamburgers {
+public class C_Challenging_Cliffs {
     static PrintWriter out = new PrintWriter((System.out));
     static Reader sc;
 
     public static void main(String args[]) throws IOException {
         sc=new Reader();
-        int t=1;
+        int t=sc.nextInt();
         while(t-->0)
         {
             solve();
@@ -19,35 +19,38 @@ public class C_Hamburgers {
     
     private static void solve() {
         int n = sc.nextInt();
-        long k = sc.nextLong();
-        int[] a = new int[n];
-        int[] b = new int[n];
+        // int[] arr = new int[n];
+        Integer[] arr = new Integer[n];
         for(int i=0; i<n; i++){
-           a[i] = sc.nextInt();
+           arr[i] = sc.nextInt();
         }
-        for(int i=0; i<n; i++){
-           b[i] = sc.nextInt();
-        }
-        long ans = 0;
-        while(true){
+        Arrays.sort(arr);
+        if(n==2){
             for(int i=0; i<n; i++){
-               if(b[i]>=a[i]){
-                b[i] -= a[i];
-               }else{
-                k = k - (a[i]-b[i]);
-                b[i] = 0;
-               }
+               System.out.print(arr[i]+" ");
             }
-            if (k >= 0) {
-                ans++;  
-            }else{
-                break;
-            }
+            System.out.println();
+            return;
         }
-        System.out.println(ans);
+        int mk = 0;
+        int min = Integer.MAX_VALUE;
+        for(int i=1; i<n; i++){
+           if(min>arr[i]-arr[i-1]){
+            mk = i;
+            min = arr[i]-arr[i-1];
+           }
+           if(min == 0){
+            break;
+           }
+        }
+        for(int i=mk; i<n; i++){
+            System.out.print(arr[i]+" ");
+        }
+        for(int i=0; i<mk; i++){
+            System.out.print(arr[i]+" ");
+        }
+        System.out.println();
     }
-    
-
 
     static class Reader {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));

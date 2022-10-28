@@ -2,52 +2,38 @@ import java.util.*;
 import java.lang.*;
 import java.io.*;
 
-public class C_Hamburgers {
+public class B_Pleasant_Pairs {
     static PrintWriter out = new PrintWriter((System.out));
     static Reader sc;
 
     public static void main(String args[]) throws IOException {
         sc=new Reader();
-        int t=1;
+        int t=sc.nextInt();
         while(t-->0)
         {
             solve();
             
         }
 
+        
     }
     
     private static void solve() {
         int n = sc.nextInt();
-        long k = sc.nextLong();
-        int[] a = new int[n];
-        int[] b = new int[n];
+        Long[] arr = new Long[n];
         for(int i=0; i<n; i++){
-           a[i] = sc.nextInt();
+           arr[i] = sc.nextLong();
         }
+        int count = 0;
         for(int i=0; i<n; i++){
-           b[i] = sc.nextInt();
+           for(int j=i+1; j<n; j++){
+              if(arr[i]*arr[j] == (i+1)+(j+1)){
+                count++;
+              }
+           }
         }
-        long ans = 0;
-        while(true){
-            for(int i=0; i<n; i++){
-               if(b[i]>=a[i]){
-                b[i] -= a[i];
-               }else{
-                k = k - (a[i]-b[i]);
-                b[i] = 0;
-               }
-            }
-            if (k >= 0) {
-                ans++;  
-            }else{
-                break;
-            }
-        }
-        System.out.println(ans);
+        System.out.println(count);
     }
-    
-
 
     static class Reader {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
