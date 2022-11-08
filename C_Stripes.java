@@ -18,52 +18,8 @@ public class C_Stripes {
     }
     
     private static void solve() throws IOException {
-        char[][] grid = new char[8][8];
-        int[] blue = new int[8];
-        int[] red = new int[8];
-        for(int i=0; i<8; i++){
-           for(int j=0; j<8; j++){
-              grid[i][j] = sc.nextChar();
-              if(grid[i][j] == 'B'){
-                blue[j] = 1;
-              }else if(grid[i][j] == 'R'){
-                red[i] = 1;
-              }
-           }
-           sc.nextLine();
-        }
-        int countBlue = 0;
-        for(int i=0; i<8; i++){
-           if(blue[i] == 0){
-            continue;
-           }
-           int temp = 0;
-           for(int j=0; j<8; j++){
-            if(grid[j][i] == 'B'){
-                temp++;
-            }
-           }
-           countBlue = Math.max(temp, countBlue);
-        }
-
-        int countRed = 0;
-        for (int i = 0; i < 8; i++) {
-            if (red[i] == 0) {
-                continue;
-            }
-            int temp = 0;
-            for (int j = 0; j < 8; j++) {
-                if (grid[i][j] == 'R') {
-                    temp++;
-                }
-            }
-            countRed = Math.max(temp, countRed);
-        }
-        if(countBlue > countRed){
-            System.out.println("B");
-        }else{
-            System.out.println("R");
-        }
+       
+        
     }
 
     static class Reader {
@@ -103,7 +59,7 @@ public class C_Stripes {
         }
 
         public char nextChar() throws IOException{
-            return (char) br.read();
+            return next().charAt(0);
         }
 
         public boolean hasNext() {

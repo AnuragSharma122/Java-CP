@@ -8,7 +8,7 @@ public class Hello {
 
     public static void main(String args[]) throws IOException {
         sc=new Reader();
-        int t=sc.nextInt();
+        int t=1;
         while(t-->0)
         {
             solve();
@@ -17,7 +17,20 @@ public class Hello {
     }
     
     private static void solve() {
-        
+        Long a = sc.nextLong();
+        Long n = sc.nextLong();
+        System.out.println(func(a, n));
+    }
+    static long func(long a, long n){
+        if(n == 0){
+            return 1;
+        }
+        long t = func(a, n/2);
+        if(n%2 == 0){
+            return t*t;
+        }else{
+            return t*t*a;
+        }
     }
 
     static class Reader {

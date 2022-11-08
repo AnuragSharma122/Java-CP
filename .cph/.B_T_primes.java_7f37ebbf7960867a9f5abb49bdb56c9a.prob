@@ -1,0 +1,1 @@
+{"name":"Local: B_T_primes","url":"c:\\Users\\Anurag\\Desktop\\Java CP\\B_T_primes.java","tests":[{"id":1667722347996,"input":"4\n4 5 81 49","output":"YES\nNO\nYES"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"c:\\Users\\Anurag\\Desktop\\Java CP\\B_T_primes.java","group":"local","local":true}
